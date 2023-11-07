@@ -73,16 +73,14 @@ inventory_quantity: selected_variant.inventory_quantity
 </div>
 {% endif %}
 
-{% comment %}
-{% assign productDescription = product.description | split:"<!-- split -->"%} 
-<div class="product-description-box">
-  {{ productDescription[0] }} 
-</div> 
-{% endcomment %}
 {% if product.metafields.my_fields.product_description != blank %} 
 <div class="product-description-box">
   {{ product.metafields.my_fields.product_description }} 
 </div>
+{% else %}
+<div class="product-description-box">
+  {{product.description}}
+</div> 
 {% endif %}
 {% if product.tags contains 'gifting_form' %}              
 <div class="Gfting-form">
