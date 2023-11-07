@@ -254,7 +254,6 @@
           {%- comment %}<locksmith:6a17>{% endcomment -%}
             {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
           {%- comment %}</locksmith:6a17>{% endcomment -%}
-          {%- include 'bold-product' with product, hide_action: 'skip' -%}
           {%
               include 'product-grid-item',
           product: product

@@ -16,8 +16,6 @@
 
 
   {% for variant in product.variants %}
-{% include 'bold-variant' with variant, hide_action: 'skip' %}
-
     {% assign current_swatch_value = ':' | append: variant[swatch_option_key] | append: ':' %}
 
     {% if remaining_swatch_values contains current_swatch_value %}

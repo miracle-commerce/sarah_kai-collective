@@ -72,8 +72,6 @@
       <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
     {% endif %}
     {{ content_for_header }}
-    {%- include 'bold-product' with product, hide_action: 'header' -%}
-    {%- render 'bold-common' -%}
     <script>
       document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');
       if(window.Shopify&&window.Shopify.designMode)document.documentElement.className+=' in-theme-editor';
