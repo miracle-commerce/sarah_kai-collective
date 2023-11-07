@@ -1,0 +1,60 @@
+<div class="accordion-wrapper{% if section.settings.enable_grid == true %} grid-wrapper{% endif %}">
+  {% for blocks in section.blocks %}
+  {% if blocks.settings.acc_qus != blank and blocks.settings.acc_ans != blank %}
+  <div class="acc_main">
+    {% if blocks.settings.acc_qus != blank %}  
+    <button class="acc_content accordion accordion_terms_conditions"><p>{{blocks.settings.acc_qus}}</p></button>
+    {% endif %}  
+    {% if blocks.settings.acc_ans != blank %}  
+    <div class="acc_panel panel">
+      <p>{{blocks.settings.acc_ans}}</p>
+    </div>
+    {% endif %}  
+  </div>
+  {% endif %} 
+  {% endfor %}
+</div>
+{% schema %}
+  {
+    "name": "Terms & Conditions",
+    "settings": [
+		{
+          "type":"checkbox",
+          "id" : "enable_grid",
+          "label":"Enable Grid"
+        }
+	], 
+     "blocks":[
+      { 
+        "type":"text",
+        "name":"Accordion",  
+         "settings": [
+          {
+            "type":"text",
+             "id" : "acc_qus",
+             "label":"Add Qus"
+          }, 
+          {
+            "type":"richtext",
+             "id" : "acc_ans",
+             "label":"Add Ans"
+          } 
+
+
+         ]
+       }
+     ],
+    "presets":[
+      {
+        "name":"Terms & Conditions"
+      }
+
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

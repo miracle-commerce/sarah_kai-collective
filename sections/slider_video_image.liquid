@@ -1,0 +1,77 @@
+<div class="slider_video_image">
+  <div class="center slide_slick">
+    {% for block in section.blocks %}
+    {% case block.type %}
+
+    {% when 'slider_video' %}  
+    <div class="slide_video">
+      {% if block.settings.slide_video != blank %}
+      <video playsinline autobuffer autoplay loop muted class="video_slider lazy">
+        <source src="{{ block.settings.slide_video }}">
+      </video>
+      {% endif %}
+    </div>
+
+    {% when 'slider_image' %}      
+    {% if block.settings.image_slider != blank %}
+    <div class="slide_image">
+      <img src="{{ block.settings.image_slider | img_url: 'master' }}">
+    </div>  
+    {% endif %}    
+    {% endcase %} 
+
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Slider Video Image",
+    "settings": [],
+	
+	"blocks":[
+
+	{
+	  "type":"slider_video",
+	  "name":"slider Video",
+	  "settings":[
+
+		{
+		  "type":"url",
+          "id":"slide_video",
+          "label":"mp4/video"
+		}
+
+]
+	},
+    {
+      "type": "slider_image",
+      "name": "slider image",
+      "settings": [
+	   {
+		  "type":"image_picker",
+          "id":"image_slider",
+          "label":"Image"
+		}
+
+
+      ]
+    }
+
+
+
+
+],
+	"presets":[
+
+		{
+		  "name":"Slider Video Image"
+		}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

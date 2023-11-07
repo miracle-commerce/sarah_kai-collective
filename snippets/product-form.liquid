@@ -1,0 +1,175 @@
+{% comment %}
+Product form
+@param product
+@param selected_variant
+{% endcomment %}
+{% if is_product_modal and settings.quickshop_show_dcb %}
+{% assign quickshop_smart_buttons = true %}
+{% endif %}
+{% if is_product_modal == false and section.settings.show_dcb %}
+{% assign product_smart_buttons = true %}
+{% endif %}
+{% if selected_variant.available == false %}
+{% assign quickshop_smart_buttons = false %}
+{% assign product_smart_buttons = false %}
+{% endif %}
+
+{% assign product_form_class = '' %}
+{% if product_smart_buttons or quickshop_smart_buttons %}
+{% assign product_form_class = 'smart-payment-enabled' %}
+{% endif %}
+{% comment %}
+<div id="smartwishlist" data-product="{{ product.id }}" data-variant="{{ product.variants.first.id }}"></div>
+
+{% endcomment %}
+{% form 'product', product, class: product_form_class, data-product-form: '' %}
+{% if product.has_only_default_variant %}
+<input
+       name="id"
+       value="{{ product.variants[0].id }}"
+       type="hidden">
+{% else %}
+{%
+      include 'product-options',
+product: product,
+selected_variant: selected_variant,
+style: settings.product_option_style
+%}
+{% endif %}
+{% if product.handle contains 'greeting-card' %}
+<div class="box-message">                                                           
+  <div class="form-field">
+    <label for="card-message">Card Message</label>
+    <textarea class="form-field-input form-field-textarea" id="card-message" name="properties[Card Message]"></textarea>
+
+  </div>
+</div>  
+{% endif %}
+{% if settings.product_show_stock_level != 'hidden'%}
+{%
+        include 'product-stock-level',
+container: 'product_page',
+variant: selected_variant,
+inventory_quantity: selected_variant.inventory_quantity
+%}
+{% endif %}
+
+
+
+{% if product.title == "GIFTING" %}
+<div class="Gfting-form">
+  <p class="line-item-property__field">
+    <label for="to">TO</label>
+    <input required class="required" id="to" type="text" name="properties[TO]" placeholder="To">
+  </p>
+  <p class="line-item-property__field">
+    <label for="from">From</label>
+    <input required class="required" id="from" type="text" name="properties[From]" placeholder="From">
+  </p>
+  <p class="line-item-property__field">
+    <label for="message">Message</label>
+    <textarea style="height:100px;" required class="required" id="message" name="properties[Message]" placeholder="Message"></textarea>
+  </p>
+</div>
+{% endif %}
+
+{% comment %}
+{% assign productDescription = product.description | split:"<!-- split -->"%} 
+<div class="product-description-box">
+  {{ productDescription[0] }} 
+</div> 
+{% endcomment %}
+{% if product.metafields.my_fields.product_description != blank %} 
+<div class="product-description-box">
+  {{ product.metafields.my_fields.product_description }} 
+</div>
+{% endif %}
+{% if product.tags contains 'gifting_form' %}              
+<div class="Gfting-form">
+  <p class="line-item-property__field">
+    <label for="to">TO</label>
+    <input required class="required" id="to" type="text" name="properties[TO]" placeholder="To">
+  </p>
+  <p class="line-item-property__field">
+    <label for="from">From</label>
+    <input required class="required" id="from" type="text" name="properties[From]" placeholder="From">
+  </p>
+  <p class="line-item-property__field">
+    <label for="message">Message</label>
+    <textarea style="height:100px;" required class="required" id="message" name="properties[Message]" placeholder="Message"></textarea>
+  </p>
+</div>
+{% endif %}
+<div class="product-form--atc">
+  <div class="product-form--atc-qty form-fields--qty" data-quantity-wrapper>
+    <div class="form-field form-field--qty-select">
+      <div class="form-field-select-wrapper">
+        <select
+                id="product-quantity-select"
+                class="form-field-input form-field-select"
+                aria-label="{{ 'general.general.quantity' | t }}"
+                data-quantity-select
+                >
+          {% for i in (1..9) %}
+          <option {% if i == 1 %}selected {% endif %}value="{{ i }}">
+            {{ i }}
+          </option>
+          {% endfor %}
+          <option value="10+">
+            10+
+          </option>
+        </select>
+        <label
+               for="product-quantity-select"
+               class="form-field-title"
+               >
+          {{ 'general.general.quantity' | t }}
+        </label>
+        {% include 'icon-library', id: 'icon-chevron-down-small' %}
+      </div>
+    </div>
+    <div class="form-field form-field--qty-input hidden">
+      <input
+             id="product-quantity-input"
+             class="form-field-input form-field-number form-field-filled"
+             value="1"
+             name="quantity"
+             type="text"
+             pattern="\d*"
+             aria-label="{{ 'general.general.quantity' | t }}"
+             data-quantity-input
+             >
+      <label
+             for="product-quantity-input"
+             class="form-field-title"
+             >
+        {{ 'general.general.quantity' | t }}
+      </label>
+    </div>
+  </div>
+  <button
+          class="product-form--atc-button {% unless selected_variant.available %}disabled{% endunless %}"
+          type="submit"
+          {% unless selected_variant.available %}disabled{% endunless %}
+          data-product-atc>
+    <span class="atc-button--text">
+      {% if selected_variant.available %}
+      {{ 'product.buttons.add_to_cart' | t }}
+      {% else %}
+      {{ 'product.buttons.sold_out' | t }}
+      {% endif %}
+    </span>
+    <span class="atc-button--icon">
+      {% include 'icon-library', id: 'icon-spinner' %}
+    </span>
+  </button>
+</div>
+{% if product_smart_buttons or quickshop_smart_buttons %}
+{{ form | payment_button }}
+{% endif %}
+{% endform %}
+{% render 'da-restock' %}
+
+{% comment %}
+{%- render 'shappify-bdl-load-bundle' -%}
+{% endcomment %}

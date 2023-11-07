@@ -1,0 +1,173 @@
+{% if request.page_type == 'collection' %}
+    {% assign productids = '{ "collections": [' %}
+    {% paginate collection.products by 50 %}
+    {%- comment %}<locksmith:5797>{% endcomment -%}
+      {%- assign locksmith_d307_forloop__size = 0 %}{% for product in collection.products %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_d307_forloop__size = locksmith_d307_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_d307_forloop__index = nil -%}
+    {%- comment %}</locksmith:5797>{% endcomment -%}
+    {% for product in collection.products %}
+        {%- comment %}<locksmith:89c9>{% endcomment -%}
+          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_d307_forloop__index == nil %}{% assign locksmith_d307_forloop__index = 1 %}{% assign locksmith_d307_forloop__index0 = 0 %}{% else %}{% assign locksmith_d307_forloop__index = locksmith_d307_forloop__index | plus: 1 %}{% assign locksmith_d307_forloop__index0 = locksmith_d307_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_d307_forloop__index == 1 %}{% assign locksmith_d307_forloop__first = true %}{% else %}{% assign locksmith_d307_forloop__first = false %}{% endif %}{% if locksmith_d307_forloop__index == locksmith_d307_forloop__size %}{% assign locksmith_d307_forloop__last = true %}{% else %}{% assign locksmith_d307_forloop__last = false %}{% endif %}{% assign locksmith_d307_forloop__rindex = locksmith_d307_forloop__size | minus: locksmith_d307_forloop__index | minus: 1 %}{% assign locksmith_d307_forloop__rindex0 = locksmith_d307_forloop__size | minus: locksmith_d307_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:89c9>{% endcomment -%}
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        {% if locksmith_d307_forloop__last == true %}
+            {% assign productids = productids | append: '{'   %}
+            {% assign productids = productids | append: '"product_id":' | append: product.id | append: ','   %}
+            {% assign productids = productids | append: '"handle":' | append: '"' | append: product.handle | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"variant_id":' | append: current_variant.id | append: ','   %}
+            {% assign productids = productids | append: '"inventory_quantity":' | append:  current_variant.inventory_quantity | append: ','   %}
+            {% assign productids = productids | append: '"inventory_management":' | append: '"' | append:  current_variant.inventory_management | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"inventory_policy":'  | append: '"' | append: current_variant.inventory_policy  | append: '"'   %}
+            {% assign productids = productids | append: '}'   %}
+        {% else %}
+            {% assign productids = productids | append: '{'   %}
+            {% assign productids = productids | append: '"product_id":' | append: product.id | append: ','   %}
+            {% assign productids = productids | append: '"handle":' | append: '"' | append: product.handle | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"variant_id":' | append: current_variant.id | append: ','   %}
+            {% assign productids = productids | append: '"inventory_quantity":' | append: current_variant.inventory_quantity | append: ','   %}
+            {% assign productids = productids | append: '"inventory_management":' | append: '"' | append:  current_variant.inventory_management | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"inventory_policy":'  | append: '"' | append: current_variant.inventory_policy  | append: '"'    %}
+            {% assign productids = productids | append: '},'   %}
+        {% endif%}
+    {% endfor %}
+    {% endpaginate %}
+    {% assign productids = productids | append: ']' %}
+    {% assign productids = productids | append: '}' %}
+    <script>
+        var advancedPreorderBadgesData = '{{productids}}';
+        var advancedPreorderProductJson = null;
+        var advancedPreorderVariantsLayer = [];
+    </script>
+{% endif%}
+    
+{% if request.page_type == 'search' %}
+    {% assign productids = '{ "Search": [' %}
+    {%- comment %}<locksmith:49cd>{% endcomment -%}
+      {%- assign locksmith_489a_forloop__size = 0 %}{% for item in search.results %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_489a_forloop__size = locksmith_489a_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_489a_forloop__index = nil -%}
+    {%- comment %}</locksmith:49cd>{% endcomment -%}
+    {% for item in search.results %}
+        {%- comment %}<locksmith:0470>{% endcomment -%}
+          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_489a_forloop__index == nil %}{% assign locksmith_489a_forloop__index = 1 %}{% assign locksmith_489a_forloop__index0 = 0 %}{% else %}{% assign locksmith_489a_forloop__index = locksmith_489a_forloop__index | plus: 1 %}{% assign locksmith_489a_forloop__index0 = locksmith_489a_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_489a_forloop__index == 1 %}{% assign locksmith_489a_forloop__first = true %}{% else %}{% assign locksmith_489a_forloop__first = false %}{% endif %}{% if locksmith_489a_forloop__index == locksmith_489a_forloop__size %}{% assign locksmith_489a_forloop__last = true %}{% else %}{% assign locksmith_489a_forloop__last = false %}{% endif %}{% assign locksmith_489a_forloop__rindex = locksmith_489a_forloop__size | minus: locksmith_489a_forloop__index | minus: 1 %}{% assign locksmith_489a_forloop__rindex0 = locksmith_489a_forloop__size | minus: locksmith_489a_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:0470>{% endcomment -%}
+        {% if item.object_type == 'product' %}
+            {%  assign product = item %}
+            {%- assign current_variant = product.selected_or_first_available_variant -%}
+            {% if locksmith_489a_forloop__last == true %}
+                {% assign productids = productids | append: '{'   %}
+                {% assign productids = productids | append: '"product_id":' | append: product.id | append: ','   %}
+                {% assign productids = productids | append: '"handle":' | append: '"' | append: product.handle | append: '"' | append: ','   %}
+                {% assign productids = productids | append: '"variant_id":' | append: current_variant.id | append: ','   %}
+                {% assign productids = productids | append: '"inventory_quantity":' | append:  current_variant.inventory_quantity | append: ','   %}
+                {% assign productids = productids | append: '"inventory_management":' | append: '"' | append:  current_variant.inventory_management | append: '"' | append: ','   %}
+                {% assign productids = productids | append: '"inventory_policy":'  | append: '"' | append: current_variant.inventory_policy  | append: '"'   %}
+                {% assign productids = productids | append: '}'   %}
+            {% else %}
+                {% assign productids = productids | append: '{'   %}
+                {% assign productids = productids | append: '"product_id":' | append: product.id | append: ','   %}
+                {% assign productids = productids | append: '"handle":' | append: '"' | append: product.handle | append: '"' | append: ','   %}
+                {% assign productids = productids | append: '"variant_id":' | append: current_variant.id | append: ','   %}
+                {% assign productids = productids | append: '"inventory_quantity":' | append: current_variant.inventory_quantity | append: ','   %}
+                {% assign productids = productids | append: '"inventory_management":' | append: '"' | append:  current_variant.inventory_management | append: '"' | append: ','   %}
+                {% assign productids = productids | append: '"inventory_policy":'  | append: '"' | append: current_variant.inventory_policy  | append: '"'    %}
+                {% assign productids = productids | append: '},'   %}
+            {% endif%}        
+        {% endif%}    
+    {% endfor %}
+    {% assign productids = productids | append: ']' %}
+    {% assign productids = productids | append: '}' %}
+    <script>
+        var advancedPreorderBadgesData = '{{productids}}';  
+        var advancedPreorderProductJson = null;
+        var advancedPreorderVariantsLayer = [];
+    </script>
+{% endif%}
+    
+{% if request.page_type == 'product' %}
+    {% assign productids = '{ "products": [' %}
+    {%- comment %}<locksmith:a08b>{% endcomment -%}
+      {%- assign locksmith_88d3_forloop__size = 0 %}{% for product in collections.all.products %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.all, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_88d3_forloop__size = locksmith_88d3_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_88d3_forloop__index = nil -%}
+    {%- comment %}</locksmith:a08b>{% endcomment -%}
+    {% for product in collections.all.products %}
+        {%- comment %}<locksmith:7f40>{% endcomment -%}
+          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.all, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_88d3_forloop__index == nil %}{% assign locksmith_88d3_forloop__index = 1 %}{% assign locksmith_88d3_forloop__index0 = 0 %}{% else %}{% assign locksmith_88d3_forloop__index = locksmith_88d3_forloop__index | plus: 1 %}{% assign locksmith_88d3_forloop__index0 = locksmith_88d3_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_88d3_forloop__index == 1 %}{% assign locksmith_88d3_forloop__first = true %}{% else %}{% assign locksmith_88d3_forloop__first = false %}{% endif %}{% if locksmith_88d3_forloop__index == locksmith_88d3_forloop__size %}{% assign locksmith_88d3_forloop__last = true %}{% else %}{% assign locksmith_88d3_forloop__last = false %}{% endif %}{% assign locksmith_88d3_forloop__rindex = locksmith_88d3_forloop__size | minus: locksmith_88d3_forloop__index | minus: 1 %}{% assign locksmith_88d3_forloop__rindex0 = locksmith_88d3_forloop__size | minus: locksmith_88d3_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:7f40>{% endcomment -%}
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        {% if locksmith_88d3_forloop__last == true %}
+            {% assign productids = productids | append: '{'   %}
+            {% assign productids = productids | append: '"product_id":' | append: product.id | append: ','   %}
+            {% assign productids = productids | append: '"handle":' | append: '"' | append: product.handle | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"variant_id":' | append: current_variant.id | append: ','   %}
+            {% assign productids = productids | append: '"inventory_quantity":' | append:  current_variant.inventory_quantity | append: ','   %}
+            {% assign productids = productids | append: '"inventory_management":' | append: '"' | append:  current_variant.inventory_management | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"inventory_policy":'  | append: '"' | append: current_variant.inventory_policy  | append: '"'   %}
+            {% assign productids = productids | append: '}'   %}
+        {% else %}
+            {% assign productids = productids | append: '{'   %}
+            {% assign productids = productids | append: '"product_id":' | append: product.id | append: ','   %}
+            {% assign productids = productids | append: '"handle":' | append: '"' | append: product.handle | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"variant_id":' | append: current_variant.id | append: ','   %}
+            {% assign productids = productids | append: '"inventory_quantity":' | append: current_variant.inventory_quantity | append: ','   %}
+            {% assign productids = productids | append: '"inventory_management":' | append: '"' | append:  current_variant.inventory_management | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"inventory_policy":'  | append: '"' | append: current_variant.inventory_policy  | append: '"'    %}
+            {% assign productids = productids | append: '},'   %}
+        {% endif%}
+    {% endfor %}
+    {% assign productids = productids | append: ']' %}
+    {% assign productids = productids | append: '}' %}
+    <script>
+        var advancedPreorderBadgesData = '{{productids}}';  
+        var advancedPreorderProductJson = {{ product | json }};
+        var advancedPreorderVariantsLayer = [];
+
+        {% for variant in product.variants %}
+            advancedPreorderVariantsLayer.push( {
+                "id": {{variant.id}},
+                "active": "{{variant.selected}}",
+                "title": "{{variant.title}}",
+                "price": "{{variant.price | money_without_currency}}",
+                "inventory_quantity": "{{variant.inventory_quantity}}",
+                "inventory_management": "{{variant.inventory_management}}",
+                "inventory_policy": "{{variant.inventory_policy}}",
+                "product_image": "{{ product | img_url }}"
+            })
+        {% endfor %}
+    </script>
+{% endif%}
+    
+{% if request.page_type == 'index' %}
+    {% assign productids = '{ "collections": [' %}
+    {%- comment %}<locksmith:e560>{% endcomment -%}
+      {%- assign locksmith_2fde_forloop__size = 0 %}{% for product in collections.all.products %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.all, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_2fde_forloop__size = locksmith_2fde_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_2fde_forloop__index = nil -%}
+    {%- comment %}</locksmith:e560>{% endcomment -%}
+    {% for product in collections.all.products %}
+        {%- comment %}<locksmith:91b5>{% endcomment -%}
+          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.all, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_2fde_forloop__index == nil %}{% assign locksmith_2fde_forloop__index = 1 %}{% assign locksmith_2fde_forloop__index0 = 0 %}{% else %}{% assign locksmith_2fde_forloop__index = locksmith_2fde_forloop__index | plus: 1 %}{% assign locksmith_2fde_forloop__index0 = locksmith_2fde_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_2fde_forloop__index == 1 %}{% assign locksmith_2fde_forloop__first = true %}{% else %}{% assign locksmith_2fde_forloop__first = false %}{% endif %}{% if locksmith_2fde_forloop__index == locksmith_2fde_forloop__size %}{% assign locksmith_2fde_forloop__last = true %}{% else %}{% assign locksmith_2fde_forloop__last = false %}{% endif %}{% assign locksmith_2fde_forloop__rindex = locksmith_2fde_forloop__size | minus: locksmith_2fde_forloop__index | minus: 1 %}{% assign locksmith_2fde_forloop__rindex0 = locksmith_2fde_forloop__size | minus: locksmith_2fde_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:91b5>{% endcomment -%}
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        {% if locksmith_2fde_forloop__last == true %}
+            {% assign productids = productids | append: '{'   %}
+            {% assign productids = productids | append: '"product_id":' | append: product.id | append: ','   %}
+            {% assign productids = productids | append: '"handle":' | append: '"' | append: product.handle | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"variant_id":' | append: current_variant.id | append: ','   %}
+            {% assign productids = productids | append: '"inventory_quantity":' | append:  current_variant.inventory_quantity | append: ','   %}
+            {% assign productids = productids | append: '"inventory_management":' | append: '"' | append:  current_variant.inventory_management | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"inventory_policy":'  | append: '"' | append: current_variant.inventory_policy  | append: '"'   %}
+            {% assign productids = productids | append: '}'   %}
+        {% else %}
+            {% assign productids = productids | append: '{'   %}
+            {% assign productids = productids | append: '"product_id":' | append: product.id | append: ','   %}
+            {% assign productids = productids | append: '"handle":' | append: '"' | append: product.handle | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"variant_id":' | append: current_variant.id | append: ','   %}
+            {% assign productids = productids | append: '"inventory_quantity":' | append: current_variant.inventory_quantity | append: ','   %}
+            {% assign productids = productids | append: '"inventory_management":' | append: '"' | append:  current_variant.inventory_management | append: '"' | append: ','   %}
+            {% assign productids = productids | append: '"inventory_policy":'  | append: '"' | append: current_variant.inventory_policy  | append: '"'    %}
+            {% assign productids = productids | append: '},'   %}
+        {% endif%}
+    {% endfor %}
+    {% assign productids = productids | append: ']' %}
+    {% assign productids = productids | append: '}' %}
+    <script>
+        var advancedPreorderBadgesData = '{{productids}}';
+        var advancedPreorderProductJson = null;
+        var advancedPreorderVariantsLayer = [];
+    </script>
+{% endif%}

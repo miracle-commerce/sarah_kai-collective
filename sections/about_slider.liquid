@@ -1,0 +1,53 @@
+<div class="about_slider_wr">
+  <div class="about__slider">
+    {% for block in section.blocks %}
+    <div class="about_slider_content">
+      <h2>{{ block.settings.about_slider_heading }}</h2>
+      <h3>{{ block.settings.about_slider_subheading }}</h3>
+      <p>{{ block.settings.about_slider_content }}</p>
+    </div>
+    {% endfor %} 
+  </div>  
+</div>
+{% schema %}
+{
+  "name": "About Slider",
+  "tag": "section",
+  "class": "slideshow",
+  "max_blocks": 5,
+  "settings": [
+
+  ],
+  "blocks": [
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+         {
+           "type": "text",
+           "id": "about_slider_heading",
+           "label": "Heading"
+         },
+         {
+           "type": "text",
+           "id": "about_slider_subheading",
+           "label": "Sub Heading"
+         },
+         {
+           "type": "text",
+           "id": "about_slider_content",
+           "label": "content"
+         }
+       ]
+     }
+   ],
+  "presets": [
+     {
+       "name": "About Slider",
+       "settings": {
+        
+        }
+     }
+   ]
+}
+{% endschema %}

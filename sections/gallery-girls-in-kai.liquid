@@ -1,0 +1,156 @@
+<div class="girls-in-kai-wr">
+  {% for block in section.blocks %}
+  <div class="girls-in-kai-box">
+    <div class="girls-in-kai-img">
+      {% if  block.settings.img_main_link != blank or block.settings.img_main != blank %}
+      <a href="{{ block.settings.img_main_link }}"><img class="des_view" src="{{ block.settings.img_main | img_url: 'master' }}">   </a>
+        <div class="girls-in-kai-content">
+          <h4>{{ block.settings.text_contant_2 }}</h4>
+          <div class="girls-in-kai_shop">
+            {% if  block.settings.text_contant_3_link != blank or block.settings.text_contant_3 != blank %}
+               <a href="{{ block.settings.text_contant_3_link }}">{{ block.settings.text_contant_3 }}</a>
+            {% endif %}
+          </div>
+        </div>
+                        
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<style>
+div#shopify-section-gallery-girls-in-kai {
+    width: 100%;
+    padding: 10px 50px 40px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .girls-in-kai-wr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 50px;
+  }
+  .girls-in-kai-box {
+    width: 33.333%;
+    padding: 15px;
+  }
+  .girls-in-kai-img img {
+    max-width: 100%;
+  }
+  .girls-in-kai-img {
+    position: relative;
+  }
+
+  .girls-in-kai-content h4 {
+    color: #000;
+    font-size: 32px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .girls-in-kai_shop a {
+    text-decoration: none;
+    color: #fff;
+    background: #f90!important;
+    padding: 10px 30px;
+    display: block;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  @media screen and (max-width: 767px) {
+    div#shopify-section-gallery-girls-in-kai {
+      width: 100%;
+      padding: 10px 10px 50px;
+    }
+    .girls-in-kai-content h4 {
+      font-size: 28px;
+    }
+    .girls-in-kai-content p {
+      font-size: 28px;
+    }
+    .girls-in-kai-box {
+      display: block;
+    }
+    .girls-in-kai-img {
+      width: 100%;
+      padding: 10px 5px;
+    }
+    .girls-in-kai-box {
+      width: 100%;
+      padding: 10px;
+    }
+    .girls-in-kai-wr {
+      display: block;
+      align-items: center;
+    }
+  }
+
+</style>
+{% schema %}
+{
+"name": "Girls In Kai",
+"settings": [
+
+],
+"blocks":[
+{
+"type": "text",
+"name":"Girls In Kai",
+"settings": [
+      {
+            "type": "image_picker",
+            "id": "img_main",
+            "label": "Desktop View Img"    
+          },    
+         {
+            "type": "url",
+            "id": "img_main_link",
+            "label": "Link"    
+          },
+    {
+            "type": "text",
+            "id": "text_contant_2",
+            "label": "Heading"    
+          },
+    {
+            "type": "text",
+            "id": "text_contant_3",
+            "label": "Button"    
+          },
+    {
+            "type": "url",
+            "id": "text_contant_3_link",
+            "label": "Button LInk"    
+          },
+          {
+          "id": "text_layout",
+          "type": "select",
+          "label": "Text layout",
+          "info": "Text Align",
+          "options": [
+            {
+              "group": "Default",
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "group": "Default",
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+]
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

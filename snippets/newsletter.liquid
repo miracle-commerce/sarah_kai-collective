@@ -1,0 +1,84 @@
+{% assign newsletter_tags = 'prospect' %}
+{% assign button_style = block.settings.button_style | default: 'primary' %}
+
+{%- if template contains 'password' %}
+  {% assign newsletter_tags = newsletter_tags | append: ', password page' %}
+{%- else -%}
+  {% assign newsletter_tags = newsletter_tags | append: ', newsletter' %}
+{%- endif -%}
+
+{% unless input_id %}
+  {% assign input_id = 'newsletter_email' %}
+{% endunless %}
+
+<div class="klaviyo-form-VrZyy9"></div>
+
+{% comment %}
+{% form 'customer', id: form_id, class: 'newsletter' %}
+  {% if form.posted_successfully? %}
+    <p class="newsletter-success">
+      {{ 'general.newsletter.success' | t }}
+    </p>
+  {% else %}
+    <input
+      type="hidden"
+      name="contact[tags]"
+      value="{{ newsletter_tags }}"
+    >
+    {% if page.handle contains 'manifesto' or page.handle contains 'new-menifesto' %}
+      <div class="form-field">
+        {% assign value = '' %}
+        {%- if form.name -%}
+          {% assign value = form.name %}
+        {%- elsif customer -%}
+          {% assign value = customer.name %}
+        {%- endif -%}
+
+        <input
+          class="form-field-input form-field-text"
+          id="contact_name"
+          name="contact[name]"
+          type="text"
+          value="{{ value }}"
+        >
+
+        <label class="form-field-title" for="contact_name">
+          {{ 'contact.form.name' | t }}
+        </label>
+      </div>
+    {% endif %}
+    <div class="form-fields-inline">
+      <div class="form-field newsletter-input">
+        <input
+          class="form-field-input form-field-text"
+          name="contact[email]"
+          id="{{ input_id }}"
+          type="email"
+          aria-label="{{ 'general.newsletter.placeholder' | t }}"
+        >
+
+        <label
+          class="form-field-title"
+          for="{{ input_id }}"
+        >
+          {{ 'general.newsletter.placeholder' | t }}
+        </label>
+      </div>
+
+      <button
+        class="
+          form-field
+          newsletter-submit
+          button-{{ button_style }}
+        "
+        name="subscribe"
+        type="submit"
+      >
+        {{ section.settings.newsletter_id }}
+        {% comment %} {{ 'general.newsletter.subscribe' | t }}{% endcomment %}
+        {% comment %}RSVP FOR MANIFESTO{% endcomment %}
+      </button>
+    </div>
+  {% endif %}
+{% endform %}
+{% endcomment %}

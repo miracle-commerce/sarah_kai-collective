@@ -1,0 +1,60 @@
+<div class="Closet">
+  <div class="shop-heading">
+    <h3>{{ section.settings.main_shop_heading }}</h3>
+  </div>
+  <div class="shop_box">
+    {% for block in section.blocks %}
+    <div class="shop_img_section">
+      <a href="{{ block.settings.btn_url}}">
+        {% if block.settings.image != blank %}
+      	  <img src="{{ block.settings.image | img_url: 'master' }}">
+        {% endif %}
+      </a>
+      <h3><a href="{{ block.settings.btn_url}}">{{ block.settings.btn_shop }}</a></h3>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Press",
+  "settings": [
+  {
+  "type": "text",
+  "id": "main_shop_heading",
+  "label": "Heading"
+  }
+
+],
+"blocks": [
+
+  {
+  "type": "text_block",
+  "name": "Column",
+  "settings": [
+      {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+      },
+      {
+      "type": "text",
+      "id": "btn_shop",
+      "label": "Button"
+      },
+      {
+      "type": "url",
+      "id": "btn_url",
+      "label": "link"
+      }
+]
+}
+
+]
+}
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+{% javascript %}
+{% endjavascript %}

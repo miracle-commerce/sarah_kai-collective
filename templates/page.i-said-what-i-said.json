@@ -1,0 +1,153 @@
+{
+  "sections": {
+    "main": {
+      "type": "custom-slideshow",
+      "blocks": {
+        "fe758e2d-044a-480f-8c3d-159b19799c6c": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/img_1693.jpg",
+            "title": "",
+            "text": "",
+            "color": "#f8f4c8",
+            "link": "",
+            "text_alignment": "center",
+            "button_one_label": "",
+            "button_one_link": "",
+            "button_one_style": "primary",
+            "button_two_label": "",
+            "button_two_link": "",
+            "button_two_style": "primary",
+            "button_three_label": "",
+            "button_three_link": "",
+            "button_three_style": "primary",
+            "button_four_label": "",
+            "button_four_link": "",
+            "button_four_style": "primary",
+            "overlay_style": "solid",
+            "overlay_color": "#000000",
+            "overlay_opacity": 3
+          }
+        }
+      },
+      "block_order": [
+        "fe758e2d-044a-480f-8c3d-159b19799c6c"
+      ],
+      "settings": {
+        "show_slideshow": true,
+        "enable_autoplay": false,
+        "autoplay_duration": 8,
+        "slideshow_height": "medium"
+      }
+    },
+    "a4282da3-8122-4d64-8925-5efabc86a2de": {
+      "type": "custom_newsletter",
+      "settings": {
+        "newsletter_id": "JOIN THE PARTY",
+        "title": "<p><strong>WELCOME TO THE PARTY<\/strong><\/p>",
+        "subheading": "<p>Jollz and FK have been KAI girls from day one, so this collaboration HAD to happen.<\/p><p>ISWIS listeners have excellent taste, and we're rewarding you for it.<\/p><p>Sign up for early access to our next KAI drop and exclusive discounts<\/p><p>#WelcometotheParty<\/p>",
+        "heading_color": "#ff9900",
+        "subheading_color": "#ff9900",
+        "background_color": "rgba(0,0,0,0)",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "desktop_alignment": "left",
+        "mobile_alignment": "top"
+      }
+    },
+    "ac50e8ee-054f-4c4c-a90a-6ad10073cb96": {
+      "type": "hero_banner",
+      "settings": {
+        "section_height": "small",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "image": "shopify:\/\/shop_images\/PNG_BACKGROUND.png",
+        "overlay_opacity": 0
+      }
+    },
+    "3f0814a6-48d4-42d5-9d9c-d49b149cdb80": {
+      "type": "about_slider",
+      "blocks": {
+        "0c404317-fe8a-4f78-99a4-94cf97b12022": {
+          "type": "slide",
+          "settings": {
+            "about_slider_heading": "",
+            "about_slider_subheading": "“KAI MAKES US FEEL LIKE WE’RE TOP 2 AND NEVER NUMBER 2”",
+            "about_slider_content": "JOLA"
+          }
+        }
+      },
+      "block_order": [
+        "0c404317-fe8a-4f78-99a4-94cf97b12022"
+      ],
+      "settings": {
+      }
+    },
+    "7ab5ae6f-be65-46e3-aed2-b1f94bb92db8": {
+      "type": "about_slider",
+      "blocks": {
+        "8f61cbf5-efa0-4c0d-bfeb-cfa427cadc7e": {
+          "type": "slide",
+          "settings": {
+            "about_slider_heading": "",
+            "about_slider_subheading": "\"IT’S THE UNOFFICIAL BAD B UNIFORM\"",
+            "about_slider_content": "FK"
+          }
+        }
+      },
+      "block_order": [
+        "8f61cbf5-efa0-4c0d-bfeb-cfa427cadc7e"
+      ],
+      "settings": {
+      }
+    },
+    "8a5149b7-283b-4433-9e79-105a37c3308e": {
+      "type": "hero_banner",
+      "settings": {
+        "section_height": "small",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "image": "shopify:\/\/shop_images\/PNG_BACKGROUND.png",
+        "overlay_opacity": 0
+      }
+    },
+    "15325d08-aa89-4506-bbbf-87c599981a29": {
+      "type": "custom-press",
+      "settings": {
+        "main_shop_heading": ""
+      }
+    },
+    "c152ed9f-af4d-4977-b542-6452a71816f5": {
+      "type": "instafeed",
+      "settings": {
+        "heading_size": 20,
+        "feed_width": 100,
+        "html_area": "<h6 style=\"text-align:center; \">YOU'RE INVITED TO THE PARTY <span style=\"color:#ff9900  !important;\">@KAICOLLECTIVE<span><\/span><\/span>\n<\/h6>"
+      }
+    },
+    "63a73e4e-8692-4a25-81e1-ee6520665485": {
+      "type": "hero_banner",
+      "settings": {
+        "section_height": "original",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36,
+        "image": "shopify:\/\/shop_images\/as_seen_on_png_copy_835aaac1-16b0-40d4-8ff0-c9ea2b9e0733.png",
+        "overlay_opacity": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "a4282da3-8122-4d64-8925-5efabc86a2de",
+    "ac50e8ee-054f-4c4c-a90a-6ad10073cb96",
+    "3f0814a6-48d4-42d5-9d9c-d49b149cdb80",
+    "7ab5ae6f-be65-46e3-aed2-b1f94bb92db8",
+    "8a5149b7-283b-4433-9e79-105a37c3308e",
+    "15325d08-aa89-4506-bbbf-87c599981a29",
+    "c152ed9f-af4d-4977-b542-6452a71816f5",
+    "63a73e4e-8692-4a25-81e1-ee6520665485"
+  ]
+}

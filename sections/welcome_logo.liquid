@@ -1,0 +1,42 @@
+<div class="welcome_logo_wr">
+  <div class="welcome_logo">
+    {% for block in section.blocks %}
+    <div class="welcome_logo_content">
+      <img src="{{ block.settings.img_main | img_url: 'master' }}" alt="logo">
+    </div>
+    {% endfor %} 
+  </div>  
+</div>
+{% schema %}
+{
+  "name": "Welcome Logo",
+  "tag": "section",
+  "class": "slideshow",
+  "max_blocks": 5,
+  "settings": [
+
+  ],
+  "blocks": [
+
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+         { 
+            "type": "image_picker",
+            "id": "img_main",
+            "label": "image"
+           }
+       ]
+     }
+   ],
+  "presets": [
+     {
+       "name": "Welcome Logo",
+       "settings": {
+        
+        }
+     }
+   ]
+}
+{% endschema %}

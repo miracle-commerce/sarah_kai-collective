@@ -1,0 +1,37 @@
+<div class="about_story_wr">
+  <div class="about_story_section">
+    <div class="about_story">
+      <h2>{{ section.settings.heading }}</h2>
+      <h3>{{ section.settings.sub_heading }}</h3>
+      <p>{{ section.settings.content_box }}</p>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "About Story",
+    "settings": [
+     { 
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+     },
+     { 
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading"
+     },
+     { 
+      "type": "html",
+      "id": "content_box",
+      "label": "paragraph"
+     }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

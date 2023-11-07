@@ -1,0 +1,295 @@
+{% style %}
+  #shopify-section-{{section.id}} {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  #shopify-section-{{section.id}} .dynamic-video-wrapper {
+    padding-top: {{ section.settings.section_spacing_mobile }}px;
+    padding-bottom: {{ section.settings.section_spacing_mobile }}px;
+  }
+
+  @media screen and (min-width: 720px) {
+    #shopify-section-{{section.id}} .dynamic-video-wrapper {
+      padding-top: {{ section.settings.section_spacing_desktop }}px;
+      padding-bottom: {{ section.settings.section_spacing_desktop }}px;
+    }
+  }
+
+  #shopify-section-{{section.id}}  .dynamic-video-wrapper .home-section--title {
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{section.id}} .dynamic-video-wrapper .home-section--subheading,
+  #shopify-section-{{section.id}} .dynamic-video-wrapper .home-section--subheading a {
+    color: {{ section.settings.subheading_color }};
+  }
+{% endstyle %}
+
+<script
+  type="application/json"
+  data-section-type="dynamic-video"
+  data-section-id="{{ section.id }}"
+  data-section-data>
+  {
+    "autoplay": {{ section.settings.autoplay | json }}
+  }
+</script>
+
+<div class="dynamic-video-wrapper">
+  {% if section.settings.title != blank or section.settings.subheading != blank %}
+    <div class="home-section--title-container" >
+    {% if section.settings.title != blank %}
+      <h2 class="home-section--title" style="font-family: Antique Olive",sans-serif";>
+        {{ section.settings.title | escape }}
+      </h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <div class="home-section--subheading">
+        {{ section.settings.subheading }}
+      </div>
+    {% endif %}
+    </div>
+  {% endif %}
+
+  {% assign url = section.settings.youtube_url | default: 'https://www.youtube.com/watch?v=_9VUPq3SxOc' %}
+<div class="dynamic-video_inner {% if section.settings.dynamic_chat %}dynamic_chat{% endif %}">
+  <div class="dynamic-video">
+    {% assign overlay = null %}
+
+    {% if section.settings.show_overlay %}
+      {% assign opacity = section.settings.opacity | times: 0.01 %}
+      {% assign overlay = section.settings.background | color_modify: 'alpha', opacity %}
+    {% endif %}
+
+    {%
+      include 'video',
+      cover: section.settings.cover,
+      aspect_ratio: section.settings.aspect_ratio,
+      overlay: overlay,
+      url: url
+      %}
+  {% if section.settings.show_caption %}
+    <div class="dynamic-video-caption rte">{{ section.settings.caption }}</div>
+  {% endif %}
+  </div>
+  <div class="dynamic-video-chat">
+     {% comment %}
+    <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Form</a> is loading comments...</div>
+   <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/simple/skin.css" />
+   <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&opts=16790&num=20&ts=1686267360220");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+    {% endcomment %}  
+      <iframe width="350px" height="600px" src="https://www.youtube.com/live_chat?v={{ section.settings.youtube_url.id }}&embed_domain=kaicollective.com" ></iframe>
+   
+  </div>
+</div>
+</div>
+
+<style>
+  .dynamic_chat .dynamic-video-chat iframe {
+    height: 100%;
+    max-height: 500px !important;
+    width: 100%;
+  }
+  @media screen and (min-width: 1024px){
+    .dynamic_chat {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .dynamic_chat .dynamic-video {
+      max-width: calc(70% - 50px);
+      width: 100%;
+    }
+    .dynamic_chat .dynamic-video-chat {
+      max-width: 30%;
+      width: 100%;
+    }
+    }
+</style>
+{% schema %}
+{
+  "name": "Custom Video",
+  "class": "section-video custom_video-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Video"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Section heading color",
+      "default": "#4D4D4D"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Section subheading color",
+      "default": "#4D4D4D"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background color"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_desktop",
+      "label": "Desktop section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_mobile",
+      "label": "Mobile section spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "youtube_url",
+      "label": "Youtube URL",
+      "accept": ["youtube", "vimeo"],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    },
+    {
+      "id":"dynamic_chat",
+      "type":"checkbox",
+      "label":"Show Youtube Chat",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_caption",
+      "label": "Show Caption"
+    },
+    {
+      "type": "richtext",
+      "id": "caption",
+      "label": "Caption",
+      "default": "<p>A short description of the video.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay video"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "label": "16:9",
+          "value": "16-9"
+        },
+        {
+          "label": "21:9",
+          "value": "21-9"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover",
+      "label": "Cover image"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Cover image position",
+      "info": "Adjusts the focal point of the image. This setting will not have a noticeable impact if the dimensions of your image match the dimensions of the section.",
+      "options": [
+        {
+          "label": "Top left",
+          "value": "top-left"
+        },
+        {
+          "label": "Top center",
+          "value": "top-center"
+        },
+        {
+          "label": "Top right",
+          "value": "top-right"
+        },
+        {
+          "label": "Center left",
+          "value": "center-left"
+        },
+        {
+          "label": "Center",
+          "value": "center-center"
+        },
+        {
+          "label": "Center right",
+          "value": "center-right"
+        },
+        {
+          "label": "Bottom left",
+          "value": "bottom-left"
+        },
+        {
+          "label": "Bottom center",
+          "value": "bottom-center"
+        },
+        {
+          "label": "Bottom right",
+          "value": "bottom-right"
+        }
+      ],
+      "default": "center-center"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show overlay"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": "Opacity",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "category": "Custom Video",
+      "name": "Video"
+    }
+  ]
+}
+
+{% endschema %}

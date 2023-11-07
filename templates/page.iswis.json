@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "d079b47b-ecb7-425a-9183-c8acd58fb1f1": {
+      "type": "custom-video",
+      "settings": {
+        "title": "manifesto",
+        "subheading": "<p>Watch the live premiere with us and share your reactions in the comments.<\/p><p>For the full MANIFESTO experience, open this page using your desktop, laptop or computer so you can share your reactions live.<\/p>",
+        "heading_color": "#ff9900",
+        "subheading_color": "#ff9900",
+        "background_color": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 36,
+        "youtube_url": "https:\/\/youtu.be\/uURz8OtLTrk",
+        "dynamic_chat": true,
+        "show_caption": false,
+        "caption": "<p>A short description of the video.<\/p>",
+        "autoplay": false,
+        "aspect_ratio": "16-9",
+        "position": "center-center",
+        "show_overlay": false,
+        "background": "#000000",
+        "opacity": 50
+      }
+    },
+    "68cba6e1-b85d-4a92-a224-7f432d8867c5": {
+      "type": "custom-rich-text",
+      "blocks": {
+        "template--15848832336055__68cba6e1-b85d-4a92-a224-7f432d8867c5-1686234814849c1444-0": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "text": "<p>\"Here I find love in everything,<br\/>A never-ending pleasure.<br\/><br\/>I am better than I used to be<br\/>I am more<br\/>I am mine<br\/>I am sky<br\/>I am ocean<br\/>I am peace<br\/>Really, I just am<br\/>This is my manifesto\"<br\/><br\/>Your clothes should make you feel something. Spark joy this summer with MANIFESTO, our new Spring\/Summer '23 collection. Highly coveted styles, always in limited quantities.<\/p>",
+            "heading_size": "medium",
+            "text_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15848832336055__68cba6e1-b85d-4a92-a224-7f432d8867c5-1686234814849c1444-0"
+      ],
+      "settings": {
+        "width": "regular",
+        "background_color": "",
+        "section_spacing_desktop": 50,
+        "section_spacing_mobile": 36
+      }
+    },
+    "7b47b744-36d9-4bb4-9626-19c7221ef23a": {
+      "type": "dynamic-featured-collection",
+      "blocks": {
+        "template--15848832336055__7b47b744-36d9-4bb4-9626-19c7221ef23a-168623488989900348-0": {
+          "type": "title_card",
+          "settings": {
+            "banner_position": "last",
+            "banner_preheading": "Shop",
+            "banner_heading": "MANIFESTO",
+            "banner_preheading_color": "#ffffff",
+            "banner_heading_color": "#ffffff",
+            "banner_overlay_color": "",
+            "banner_overlay_opacity": 0,
+            "banner_image": "shopify:\/\/shop_images\/pinkstack-6.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--15848832336055__7b47b744-36d9-4bb4-9626-19c7221ef23a-168623488989900348-0"
+      ],
+      "settings": {
+        "title": "SHOP MANIFESTO",
+        "subheading": "",
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "section_spacing_desktop": 0,
+        "section_spacing_mobile": 36,
+        "collection": "manifesto",
+        "product_count": 16,
+        "product_layout": "slideshow",
+        "cta_text": "SHOP MANIFESTO",
+        "cta_button_style": "primary",
+        "background_image_position": "center-middle",
+        "background_overlay_style": "none",
+        "background_overlay_color": "",
+        "background_overlay_opacity": 50
+      }
+    }
+  },
+  "order": [
+    "d079b47b-ecb7-425a-9183-c8acd58fb1f1",
+    "68cba6e1-b85d-4a92-a224-7f432d8867c5",
+    "7b47b744-36d9-4bb4-9626-19c7221ef23a"
+  ]
+}

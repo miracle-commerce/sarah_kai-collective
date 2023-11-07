@@ -1,0 +1,72 @@
+{% if section.settings.show_product_recommendations %}
+
+<section
+    class="gallery-navigation--scroller"
+>
+
+{%- assign tag_alt = "BLANK" -%}
+{%- for tag in product.tags -%}
+  {%- assign tag_prefix = tag | slice: 0, 5 -%}
+  {%- if tag_prefix == "_alt_" -%}
+    {%- assign tag_alt = tag -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- unless tag_alt == "BLANK" -%}
+  {%- assign vendor_handle = product.vendor | handle -%}
+  {%- if collections[vendor_handle].products.size > 0 -%}
+    {%- assign alt_products_total = 0 -%}
+    {%- capture products_output -%}
+      {%- paginate collections[vendor_handle].products by 200 -%}
+        {%- for alt_product in collections[vendor_handle].products -%}
+          {%- comment %}<locksmith:5057>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: alt_product, subject_parent: collections[vendor_handle], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:5057>{% endcomment -%}
+          {%- if alt_product.tags contains tag_alt -%}
+            {%- unless alt_product.id == product.id -%}
+            {%- assign alt_products_total = alt_products_total | plus: 1 -%}
+            <a href="{{ alt_product.url }}" title="{{ alt_product.title }}"><img src="{{ alt_product.featured_image | img_url: '90x90', crop: 'center', format: 'pjpg' }}" alt="{{ alt_product.title }}"></a>
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endpaginate -%}
+    {%- endcapture -%}
+  {%- endif -%}
+{%- endunless -%}
+
+{%- if alt_products_total > 0 -%}
+<br><br>
+<p><strong>Also Available In:</strong></p>
+<div class="product-alt-colours">
+{{ products_output }}
+</div>
+{%- endif -%}
+
+</section>
+
+
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Other Colors",
+  "class": "product-recommendations--section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_product_recommendations",
+      "label": "Show dynamic recommendations",
+      "info": "Look at type/fabric tags to pull in similar products.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "product_recommendations_heading",
+      "label": "Heading",
+      "default": "Also available in:"
+    }
+  ]
+}
+
+{% endschema %}

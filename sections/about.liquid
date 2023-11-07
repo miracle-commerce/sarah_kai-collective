@@ -1,0 +1,114 @@
+<div class="about_section_wr">
+  <div class="about_section">
+    <h2>{{ section.settings.heading1 }}</h2>
+    <div class="about_content">
+      {% if section.settings.img_main1 != blank %}
+    	  <img src="{{ section.settings.img_main1 | img_url: 'master' }}" alt="img">
+      {% endif %}
+    </div>
+    <div class="about_image">
+      <h3>{{ section.settings.sub_heading1 }}</h3>
+      <p>{{ section.settings.content_box1 }}</p>
+    </div>
+  </div>
+
+  <div class="about_section">
+    <h2>{{ section.settings.heading2 }}</h2>
+    <div class="about_image">
+      <h3>{{ section.settings.sub_heading2 }}</h3>
+      <p>{{ section.settings.content_box2 }}</p>
+    </div>
+    <div class="about_content">
+      {% if section.settings.img_main2 != blank %}
+     	 <img src="{{ section.settings.img_main2 | img_url: 'master' }}" alt="img">
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="about_section">
+    <h2>{{ section.settings.heading3 }}</h2>
+    <div class="about_content">
+      {% if section.settings.img_main3 != blank %}
+    	  <img src="{{ section.settings.img_main3 | img_url: 'master' }}" alt="img">
+      {% endif %}
+    </div>
+    <div class="about_image">
+      <h3>{{ section.settings.sub_heading3 }}</h3>
+      <p>{{ section.settings.content_box3 }}</p>
+    </div>
+  </div>
+  
+</div>
+{% schema %}
+  {
+    "name": "About",
+    "settings": [
+     { 
+      "type": "text",
+      "id": "heading1",
+      "label": "Heading"
+     },
+     { 
+      "type": "image_picker",
+      "id": "img_main1",
+      "label": "image"
+     },
+     { 
+      "type": "text",
+      "id": "sub_heading1",
+      "label": "Sub Heading"
+     },
+     { 
+      "type": "html",
+      "id": "content_box1",
+      "label": "paragraph"
+     },
+     { 
+      "type": "text",
+      "id": "heading2",
+      "label": "Heading"
+     },
+     { 
+      "type": "image_picker",
+      "id": "img_main2",
+      "label": "image"
+     },
+     { 
+      "type": "text",
+      "id": "sub_heading2",
+      "label": "Sub Heading"
+     },
+     { 
+      "type": "html",
+      "id": "content_box2",
+      "label": "paragraph"
+     },
+     { 
+      "type": "text",
+      "id": "heading3",
+      "label": "Heading Main"
+     },
+     { 
+      "type": "image_picker",
+      "id": "img_main3",
+      "label": "image"
+     },
+     { 
+      "type": "text",
+      "id": "sub_heading3",
+      "label": "Sub Heading"
+     },
+     { 
+      "type": "html",
+      "id": "content_box3",
+      "label": "paragraph"
+     }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

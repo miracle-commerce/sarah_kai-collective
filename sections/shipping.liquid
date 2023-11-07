@@ -1,0 +1,47 @@
+{% for blocks in section.blocks %}
+<div class="acc_main">
+  <button class="acc_content accordion accordion_shipping"><p>{{blocks.settings.acc_qus}}</p></button>
+  <div class="acc_panel panel">
+    <p>{{blocks.settings.acc_ans}}</p>
+  </div>
+</div>
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Shipping",
+    "settings": [], 
+     "blocks":[
+      { 
+        "type":"text",
+        "name":"Accordion",  
+         "settings": [
+          {
+            "type":"text",
+             "id" : "acc_qus",
+             "label":"Add Qus"
+          }, 
+          {
+            "type":"richtext",
+             "id" : "acc_ans",
+             "label":"Add Ans"
+          } 
+
+
+         ]
+       }
+     ],
+    "presets":[
+      {
+        "name":"Shipping"
+      }
+
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
