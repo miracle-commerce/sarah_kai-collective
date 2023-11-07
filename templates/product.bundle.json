@@ -1,0 +1,59 @@
+{
+  "name":"Bundle Product Template", 
+  "sections":{
+    "main": {
+      "type": "static-product",
+      "settings": {
+        "button_bundle": "Complete the look",
+        "button_bundle_link": "shopify:\/\/pages\/shop-the-look",
+        "show_breadcrumbs": true,
+        "layout": "layout--two-col",
+        "show_dcb": false,
+        "product_cart_redirect": false,
+        "gallery_aspect_ratio": "natural",
+        "gallery_image_crop": true,
+        "gallery_thumbnail_position": "left",
+        "gallery_video_autoplay": true,
+        "gallery_video_looping": true,
+        "gallery_hover_zoom": "replace",
+        "gallery_click_to_zoom": "disabled"
+      }
+    },
+    "recommendations": {
+      "type": "static-product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "THESE WOULD ALSO LOOK GOOD ON YOU"
+      }
+    },
+    "reviews": {
+      "type": "static-product-reviews",
+      "settings": {
+      }
+    },
+    "recently-viewed": {
+      "type": "static-recently-viewed",
+      "settings": {
+        "enable_recently_viewed_products": true
+      }
+    },
+    "promo-grid": {
+      "type": "static-product-promo-grid",
+      "settings": {
+        "enable": false,
+        "heading_color": "#4d4d4d",
+        "subheading_color": "#4d4d4d",
+        "background_color": "",
+        "maintain_aspect_ratio": false,
+        "compress_blocks": false
+      }
+    },
+    "product-image-customer": {
+      "type": "product-image-customer",
+      "settings": {
+        "heading": "Heading Section"
+      }
+    }
+  },
+  "order":["main", "recommendations", "reviews", "recently-viewed", "promo-grid", "product-image-customer"]
+}
