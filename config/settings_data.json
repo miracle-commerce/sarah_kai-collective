@@ -1464,14 +1464,14 @@
           "desktop_logo": "shopify:\/\/shop_images\/Kai_Logo_White_1.png",
           "desktop_logo_height": 39,
           "mobile_logo_height": 30,
-          "bg_image": "shopify:\/\/shop_images\/ecomm_backdrop_plain.jpg",
+          "bg_image": "shopify:\/\/shop_images\/PNG.jpg",
           "color": "#ffffff",
           "text_position": "start",
-          "heading": "<p><strong>WELCOME TO OUR AW23 EARLY ACCESS LAUNCH FOR MEMBERS OF OUR COLLECTIVE<\/strong><\/p>",
+          "heading": "<p><strong>WELCOME TO OUR MYSTERY BOX EARLY ACCESS LAUNCH FOR MEMBERS OF OUR COLLECTIVE<\/strong><\/p>",
           "subheading": "<p>Please check your texts and emails for your password<\/p>",
           "show_passowrd_content": true,
           "show_password_form": true,
-          "text": "<p>EARLY ACCESS STARTS AT 5PM (BST) AND THE WEBSITE OPENS TO EVERYONE AT 6PM (BST). SEE YOU SOON!<\/p>",
+          "text": "<p>EARLY ACCESS STARTS AT 5PM (GMT) AND THE WEBSITE OPENS TO EVERYONE AT 6PM (GMT). SEE YOU SOON!<\/p>",
           "enable_newsletter_signup": false,
           "enable_mailchimp_signup": false,
           "newsletter_title": "",
@@ -2439,6 +2439,14 @@
         "type": "shopify:\/\/apps\/clean-size-charts-size-guide\/blocks\/core\/feed2801-552f-4e8f-ba1f-32ba9fe8a8f0",
         "disabled": false,
         "settings": {
+        }
+      },
+      "124348908681409149": {
+        "type": "shopify:\/\/apps\/simple-bundles-kits\/blocks\/simple-bundles-v2\/e553276b-36b2-446d-b80a-aa47fe5f96ac",
+        "disabled": false,
+        "settings": {
+          "select_placeholder": "Please select an option",
+          "disable_oos_options": true
         }
       }
     }

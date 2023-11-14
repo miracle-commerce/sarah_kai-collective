@@ -1,6 +1,5 @@
 {
-  "name":"Bundle Product Template", 
-  "sections":{
+  "sections": {
     "main": {
       "type": "static-product",
       "settings": {
@@ -55,5 +54,12 @@
       }
     }
   },
-  "order":["main", "recommendations", "reviews", "recently-viewed", "promo-grid", "product-image-customer"]
+  "order": [
+    "main",
+    "recommendations",
+    "reviews",
+    "recently-viewed",
+    "promo-grid",
+    "product-image-customer"
+  ]
 }

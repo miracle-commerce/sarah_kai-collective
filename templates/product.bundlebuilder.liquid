@@ -48,9 +48,10 @@
         if (link) {
             // First part of the URL pathname, either 'apps' or a language code
             var pathnameFirst = window.location.pathname.split('/')[1];
+            var linkFirst = link.split('/')[1];
 
             // If a language code is in current URL, add it to relative bundle link
-            if (languageCodes.has(pathnameFirst.split('-')[0])){
+            if (languageCodes.has(pathnameFirst.split('-')[0]) && linkFirst != pathnameFirst) {
                 link = '/' + pathnameFirst + link;
             }
             window.location.replace(link + window.location.search);
